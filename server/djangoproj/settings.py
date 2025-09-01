@@ -60,9 +60,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'frontend/static'),
+            # ONLY the React build root directory (where index.html actually is)
             os.path.join(BASE_DIR, 'frontend/build'),
-    os.path.join(BASE_DIR, 'frontend/build/static'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -75,6 +74,13 @@ TEMPLATES = [
         },
     },
 ]
+
+# Static files configuration
+STATICFILES_DIRS = [
+    # ONLY the React build static directory (where CSS/JS files are)
+    os.path.join(BASE_DIR, 'frontend/build/static'),
+]
+
 
 WSGI_APPLICATION = 'djangoproj.wsgi.application'
 
