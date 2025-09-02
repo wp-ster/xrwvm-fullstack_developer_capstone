@@ -123,9 +123,11 @@ def registration(request):
         logger.debug(f"{username} is new user")
 
     if not username_exist:
-        user = User.objects.create_user(username=username, first_name=first_name, 
+        user = User.objects.create_user(username=username, first_name=first_name,
                                       last_name=last_name, password=password, email=email)
         login(request, user)
         return JsonResponse({"userName": username, "status": "Authenticated"})
     else:
         return JsonResponse({"userName": username, "error": "Already Registered"})
+
+
